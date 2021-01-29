@@ -20,11 +20,10 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { 
-  List, ListItem, Left, 
-  Body, Right, Input, Container, 
-  Toast, Header, Icon
+  Toast
 } from 'native-base';
 import { getContact } from '../../services/apiQuery'
+import { useSelector, useDispatch } from 'react-redux';
 
 /**
  * @function Home Screen to show all of people list data
@@ -33,17 +32,27 @@ import { getContact } from '../../services/apiQuery'
 const Home = (props) => {
     //Use States
     const [contacts, setContacts] = useState([])
-
+    const stateContact = useSelector(state => state.contacts);
+  const [firstTime,setFirstTime] = useState(false)
+ 
+    let search = async () => {
+      let listContacts = await getContact()
+      setFirstTime(true)
+      setContacts(listContacts)
+    }
     //Use Effects
-    useEffect( async ()=>{
-        let listContacts = await getContact()
-        setContacts(listContacts)
-        console.log('Cargo el Home ', listContacts);
+    useEffect(()=>{
+      search()
     }, [])
 
-    useEffect(()=>{
-        console.log('actualizo el hook');
-    }, [contacts])
+    // useEffect(()=>{
+    //   if(stateContact.length > 0 && !firstTime){
+    //     setContacts(stateContact)
+    //   }
+    //   else{
+    //     setFirstTime(false)
+    //   }
+    // }, [stateContact])
 
     const Item = ({item, index, separators}) => {
         return (
@@ -52,7 +61,7 @@ const Home = (props) => {
             onHideUnderlay={separators.unhighlight}
             style={styles.item}
             onPress={()=> props.navigation.navigate('Contact', {
-                itemId: 86
+                itemId: item.id
             })}>
                 <Text style={styles.title}>{item.name}</Text>
                 <Text style={styles.number}>{item.phoneNumber}</Text>

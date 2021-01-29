@@ -8,25 +8,17 @@
 */
 
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-} from 'react-native';
-import { Provider } from 'react-redux';
-import store from './src/redux/store';
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
+import store from './src/reduxStore/store';
 import Navigator from './src/components/navigator/Navigator'
 import { Root } from 'native-base';
-
+import { Provider as StoreProvider } from 'react-redux'
 const App: () => React$Node = () => {
   return (
-    <Provider store={store}>
+    <StoreProvider store={store}>
       <Root>
         <Navigator/>
       </Root>
-    </Provider>
+    </StoreProvider>
   );
 };
 

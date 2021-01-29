@@ -47,10 +47,10 @@ function reducers(state = stateInitial, action) {
       return {
         ...state,
         contacts: [
-          action.payload === state.favorite.id ? undefined : state.favorite, 
+          state.favorite === undefined && action.payload === state.favorite.id ? undefined : state.favorite, 
           ...state.contacts.filter(m => m.id !== action.payload)
-        ], 
-        favorite : action.payload === state.favorite.id ? undefined : state.favorite,
+        ].map(m => m !== undefined), 
+        favorite : state.favorite !== undefined && action.payload === state.favorite.id ? undefined : state.favorite,
       };
     default: {
       return state;

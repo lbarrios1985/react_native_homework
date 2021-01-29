@@ -31,7 +31,7 @@ export const getContact = async () => {
  * @function getContactFilter its used for generate Contact list filtered
  * @param oldContact its the actual array for contacts
  * @param word its value for filter in the array
- * @returns Array response
+ * @returns String response
 */
 export const getContactFilter = async (oldContact, word) => {
   // If word dont it s word then render oldContact else the filter 
@@ -39,8 +39,24 @@ export const getContactFilter = async (oldContact, word) => {
 }
 
 /**
+ * @function getContactPk its used search contact
+ * @param base its the actual array for contacts
+ * @param pk its identification of contact for search
+ * @returns Object response
+*/
+export const getContactPk = async (base, pk) => {
+  let contact = base.find(m => m.pk === pk)
+  if (contact !== undefined && contact !== null) {
+    return contact
+  } 
+  else{
+    throw "contact_not_found"
+  }
+}
+
+/**
  * @function additionalInfo its used for generate Contact list
- * @returns Array response
+ * @returns Object response
 */
 export const additionalInfo = async () => {
   if(Math.random() < 0.7){
