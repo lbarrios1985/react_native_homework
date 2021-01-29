@@ -12,7 +12,11 @@
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.9.2",
+<<<<<<< HEAD
     "faker": "^5.2.0",
+=======
+    "@react-navigation/stack": "^5.14.2",
+>>>>>>> 71ec49dc792cd8fe15c62bf4216f8d92bd8601c0
     "native-base": "^2.15.2",
     "react": "16.13.1",
     "react-native": "0.63.4",
