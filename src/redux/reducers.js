@@ -42,6 +42,16 @@ function reducers(state = stateInitial, action) {
         contacts: [action.payload, ...state.contacts], 
         favorite : action.payload,
       };
+    case 'DELETE_CONTACT':
+      // Delete Contact and evaluation if the contrac was favorite
+      return {
+        ...state,
+        contacts: [
+          action.payload === state.favorite.id ? undefined : state.favorite, 
+          ...state.contacts.filter(m => m.id !== action.payload)
+        ], 
+        favorite : action.payload === state.favorite.id ? undefined : state.favorite,
+      };
     default: {
       return state;
     }

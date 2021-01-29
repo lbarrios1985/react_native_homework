@@ -7,7 +7,7 @@
  * @version 1.0
  */
 
- import faker, { fake } from 'faker'
+ import faker from 'faker'
 
 /**
  * @function getContact its used for generate Contact list
