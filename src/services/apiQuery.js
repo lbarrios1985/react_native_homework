@@ -7,7 +7,7 @@
  * @version 1.0
  */
 
- import faker from 'faker'
+ import faker, { fake } from 'faker'
 
 /**
  * @function getContact its used for generate Contact list
@@ -28,7 +28,7 @@ export const getContact = async () => {
 }
 
 /**
- * @function getContactFilter its used for generate Contact list
+ * @function getContactFilter its used for generate Contact list filtered
  * @param oldContact its the actual array for contacts
  * @param word its value for filter in the array
  * @returns Array response
@@ -36,4 +36,17 @@ export const getContact = async () => {
 export const getContactFilter = async (oldContact, word) => {
   // If word dont it s word then render oldContact else the filter 
   return typeof(word) !== 'string' ? oldContact : oldContact.filter(m => m.name.toLowerCase() === word.toLowerCase())
+}
+
+/**
+ * @function additionalInfo its used for generate Contact list
+ * @returns Array response
+*/
+export const additionalInfo = async () => {
+  if(Math.random() < 0.7){
+    return { jobTitle: faker.name.jobTitle() }
+  } 
+  else {
+    throw "contact_not_valid"
+  }
 }

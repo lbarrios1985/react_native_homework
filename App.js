@@ -17,11 +17,14 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import Navigator from './src/components/navigator/Navigator'
+import { Root } from 'native-base';
 
 const App: () => React$Node = () => {
   return (
     <Provider store={store}>
-      <Navigator/>
+      <Root>
+        <Navigator/>
+      </Root>
     </Provider>
   );
 };
