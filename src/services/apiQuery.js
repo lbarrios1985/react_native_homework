@@ -18,8 +18,8 @@ export const getContact = async () => {
   // loop for generate 200 records
   for(let i = 0;i<200;i++){
     contacts.push({
-      name: `${faker.name.firstName} ${faker.name.lastName}`,
-      phoneNumber: faker.phone.phoneNumber
+      name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+      phoneNumber: faker.phone.phoneNumber()
     })
   }
   // Sort alphabetic
