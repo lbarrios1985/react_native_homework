@@ -11,6 +11,8 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
@@ -18,9 +20,9 @@ import Navigator from './src/components/navigator/Navigator'
 
 const App: () => React$Node = () => {
   return (
-    <>
+    <Provider store={store}>
       <Navigator/>
-    </>
+    </Provider>
   );
 };
 
